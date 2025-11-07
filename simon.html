@@ -203,6 +203,11 @@ table, th, td {
 Round #:  <input readonly type="text" name="round" size="5">
 <p>Click the squares in the same order that "Simon" does. Each round adds an additional square and an incremental increase in speed.</p>
 <input type="hidden" id="info" size="40" />
+<!--
+  The 2x2 table below represents the Simon pad grid.
+  Each cell is a clickable pad, wired via onMouseDown to yourTurn(n).
+  Cell IDs (cell1..cell4) and table ID (table1) are referenced in game logic.
+-->
 
 <table width="500" cellspacing="0" cellpadding="0" style="border-collapse: collapse" height="500" id="table1">
 	<tr>
