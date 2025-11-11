@@ -2,21 +2,18 @@
 <html>
   <head>
     <meta charset="utf-8">
+	<meta http-equiv="Content-Language" content="en-us">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <meta name="robots" content="noindex">
-    <title>Peter A. Zink</title>
-
     <link rel="stylesheet" href="stylesheets/styles.css">
     <link rel="stylesheet" href="stylesheets/pygment_trac.css">
     <meta name="viewport" content="width=device-width">
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-<meta http-equiv="Content-Language" content="en-us">
-<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
 <title>Sort of Simon</title>
 
-<script language="javascript" type="text/javascript">
+<script type="text/javascript">
 
 	var cellOrder = new Array(99);
 	var i=0;
@@ -26,7 +23,7 @@
 
 
 function firstSquare() {
-	document.forms[0].elements['startButton'].disabled="true";
+	document.forms[0].elements['startButton'].disabled=true;
 	cellOrder[0] = rand(4);
 	playMemory();
 }
@@ -61,13 +58,13 @@ function playMemory() {
 					onColor="rgb(255,255,0)";
 				break
 				default:
-					document.write("oops")
+					console.error("oops")
 				}
 
 			x=document.getElementById('table1').rows[onRow].cells;
 			x[onColumn].style.background=onColor;
 
-    		setTimeout("nextSquare()",speed);
+			setTimeout(nextSquare, speed);
 
 		}
 		else if (i > j){
@@ -89,7 +86,7 @@ function nextSquare(){
 			n[0].style.background=onColor;
 			n[1].style.background=onColor;
 
-	setTimeout("playMemory()",speed);
+	setTimeout(playMemory, speed);
 }
 
 
@@ -139,7 +136,7 @@ function yourTurn(cellNumber){
 
 				if (cellOrder[k] == cellNumber) {
 						k++;
-						setTimeout("clearSquares()",250);
+						setTimeout(clearSquares, speed);
 					}
 				else {
 					if (j > 0){
@@ -205,18 +202,18 @@ Round #:  <input readonly type="text" name="round" size="5">
 <input type="hidden" id="info" size="40" />
 <!--
   The 2x2 table below represents the Simon pad grid.
-  Each cell is a clickable pad, wired via onMouseDown to yourTurn(n).
+  Each cell is a clickable pad, wired via onclick to yourTurn(n).
   Cell IDs (cell1..cell4) and table ID (table1) are referenced in game logic.
 -->
 
 <table width="500" cellspacing="0" cellpadding="0" style="border-collapse: collapse" height="500" id="table1">
 	<tr>
-		<td width="250" id="cell1" onMouseDown="javascript:yourTurn(1)">&nbsp;</td>
-		<td width="250" id="cell2" onMouseDown="javascript:yourTurn(2)">&nbsp;</td>
+		<td width="250" id="cell1" onclick="javascript:yourTurn(1)">&nbsp;</td>
+		<td width="250" id="cell2" onclick="javascript:yourTurn(2)">&nbsp;</td>
 	</tr>
 	<tr>
-		<td width="250" id="cell3" onMouseDown="javascript:yourTurn(3)">&nbsp;</td>
-		<td width="250" id="cell4" onMouseDown="javascript:yourTurn(4)">&nbsp;</td>
+		<td width="250" id="cell3" onclick="javascript:yourTurn(3)">&nbsp;</td>
+		<td width="250" id="cell4" onclick="javascript:yourTurn(4)">&nbsp;</td>
 	</tr>
 </table>
 
